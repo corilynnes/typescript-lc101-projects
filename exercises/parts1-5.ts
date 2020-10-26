@@ -24,17 +24,17 @@ const kilometersToTheMoon: number = 384400;
 
 // Part 3: Create a Function ("getDaysToLocation")
 
-function getDaysToLocation(kilometersAway: number): number{
- let milesToLocation: number = kilometersAway * milesPerKilometer;
-let hoursToLocation: number = milesToLocation / speedMph;
-let daysToLocation: number = hoursToLocation / 24;
-return daysToLocation
-}
+// function getDaysToLocation(kilometersAway: number): number{
+//  let milesToLocation: number = kilometersAway * milesPerKilometer;
+// let hoursToLocation: number = milesToLocation / speedMph;
+// let daysToLocation: number = hoursToLocation / 24;
+// return daysToLocation
+// }
 
 // Move your output statement from part 2 here. Update the template literal to call
 // the function and print the outputs for a Mars trip and a moon trip.
-console.log(`${SpacecraftName} would take ${getDaysToLocation(kilometersToMars)} days to get to Mars.`);
-console.log(`${SpacecraftName} would take ${getDaysToLocation(kilometersToTheMoon)} days to get to the Moon.`);
+// console.log(`${SpacecraftName} would take ${getDaysToLocation(kilometersToMars)} days to get to Mars.`);
+// console.log(`${SpacecraftName} would take ${getDaysToLocation(kilometersToTheMoon)} days to get to the Moon.`);
 
 
 
@@ -45,23 +45,28 @@ class Spacecraft {
     speedMph: number;
     constructor(name: string, speedMph: number) {
        this.name = name;
-       this.speedMpg = speedMph;
+       this.speedMph = speedMph;
     }
-    greet() {
-       return "Hello, " + this.name;
-    }
+    getDaysToLocation(kilometersAway: number): number{
+        let milesToLocation: number = kilometersAway * this.milesPerKilometer;
+       let hoursToLocation: number = milesToLocation / this.speedMph;
+       let daysToLocation: number = hoursToLocation / 24;
+       return daysToLocation
+       }
  }
- 
- let Bob = new Astronaut("Bob","Smith");
+
 
 
 
 // Create an instance of the class here:
 
-
+ 
+let spaceShuttle = new Spacecraft('Determination',17500);
 
 // Move your output statements from part 3 here. Update the template literals use the
 // instance of the class.
+console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToMars)} days to get to Mars.`);
+console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToTheMoon)} days to get to the Moon.`);
 
 
 
